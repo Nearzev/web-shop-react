@@ -42,8 +42,7 @@ const Header = (props: HeaderProps) => {
 
         {cartOpen && (
           <div className='shop-cart'>
-            {props.orders.length > 0 ? 
-              showOrders(props) : showNothing()}
+            {props.orders.length > 0 ? showOrders(props) : showNothing()}
           </div>
         )}
       </div>

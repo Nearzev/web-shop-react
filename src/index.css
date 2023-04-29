@@ -77,6 +77,12 @@ header .shop-cart .empty h2{
     text-align: center;
 }
 
+.Empty {
+    text-align: center;
+    font-size: 40px;
+    padding: 50px;
+}
+
 header .shop-cart .item {
     width: 100%;
     float: left;
