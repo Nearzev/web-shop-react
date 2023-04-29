@@ -6,10 +6,11 @@ type PropsType = {
     items: Array<ItemsType>
 }
 
-export default function Items(props: PropsType) {
+const Items = (props: PropsType) => {
     return (
         <main>
             {props.items.map((item) => {return <Item key={item.id} item={item} /> })}
         </main>
     )
 }
+export default Items

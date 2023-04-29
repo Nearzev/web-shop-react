@@ -3,7 +3,7 @@ import { ItemsType } from '../App'
 type ItemProps = {
     item: ItemsType
 }
-export default function Item(props: ItemProps) {
+const Item = (props: ItemProps) => {
     return (
         <div className='item'>
             <img src={`./img/${props.item.img}`} alt="" />
@@ -14,3 +14,5 @@ export default function Item(props: ItemProps) {
         </div>
     )
 }
+
+export default Item
