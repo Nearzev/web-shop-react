@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Items from './components/Items';
@@ -49,15 +49,22 @@ const items: Array<ItemsType>  = [
 ]
 
 const App = () => {
+  const [orders, setOrders] = useState(Array<ItemsType>);
+
+  const addToOrder = (item: ItemsType) => {
+    setOrders([...orders, item])
+  }
+
   return (
     <div className="App">
       <div className='wrapper'>
-        <Header />
-        <Items items={items}/>
+        <Header orders={orders}/>
+        <Items items={items} onAdd={addToOrder}/>
       </div>
       <Footer />
     </div>
   );
+
 }
 
 export default App;

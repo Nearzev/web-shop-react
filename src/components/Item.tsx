@@ -1,7 +1,8 @@
 import React from 'react'
 import { ItemsType } from '../App'
 type ItemProps = {
-    item: ItemsType
+    item: ItemsType,
+    onAdd: (item: ItemsType) => void
 }
 const Item = (props: ItemProps) => {
     return (
@@ -10,7 +11,7 @@ const Item = (props: ItemProps) => {
             <h2>{props.item.title}</h2>
             <p>{props.item.desc}</p>
             <b>{props.item.price}$</b>
-            <div className='add-to-cart'>+</div>
+            <div className='add-to-cart' onClick={() => props.onAdd(props.item)}>+</div>
         </div>
     )
 }

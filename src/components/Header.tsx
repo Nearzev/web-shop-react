@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import { FaShoppingCart } from "react-icons/fa";
+import { ItemsType } from '../App';
+import Order from './Order';
 
-const Header = () => {
+type HeaderProps = {
+  orders: Array<ItemsType>
+}
+
+const Header = (props: HeaderProps) => {
 
   let [cartOpen, setCartOpen] = useState(false)
 
@@ -18,7 +24,9 @@ const Header = () => {
 
         {cartOpen && (
           <div className='shop-cart'>
-
+            {props.orders.map(order => {
+              return <Order key={order.id} item={order}/>
+            })}
           </div>
         )}
       </div>
