@@ -12,6 +12,14 @@ export type ItemsType = {
     price: string
   }
 
+  // const getItems = async (url: string):Promise<ItemsType[]> => {
+  //   const response = await fetch(url)
+  //   let json = await response.json();
+  //   let items:Array<ItemsType> = await JSON.parse(json);
+  //   return items
+  // }
+  
+  // const items = getItems('https://63fdd8c4cd13ced3d7c02d2a.mockapi.io/t/Cards');
 
 const items: Array<ItemsType>  = [
   {
@@ -52,7 +60,18 @@ const App = () => {
   const [orders, setOrders] = useState(Array<ItemsType>);
 
   const addToOrder = (item: ItemsType) => {
-    setOrders([...orders, item])
+    let isInArr = false
+
+    orders.forEach(order => {
+      if(order.id === item.id) {
+        isInArr = true
+        console.log('Товар уже в корзине')
+      }
+    })
+
+    if(!isInArr) {
+      setOrders([...orders, item])
+    }
   }
 
   return (
