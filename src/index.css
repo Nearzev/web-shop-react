@@ -100,9 +100,23 @@ header .shop-cart .item h2 {
     margin-bottom: 10px;
 }
 
-header .shop-cart .item p {
+header .shop-cart .item b {
     color: #797979;
     font-weight: 600;
+}
+
+header .shop-cart .item .delete-icon {
+    color: #ca5252;
+    float: right;
+    position: relative;
+    top: -15px;
+    cursor: pointer;
+    transition: color, transform 500ms ease;
+}
+
+header .shop-cart .item .delete-icon:hover {
+    color: #d83030;
+    transform: scale(1.5);
 }
 
 header .presentation {

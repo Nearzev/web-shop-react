@@ -1,8 +1,10 @@
 import React from 'react'
 import { ItemsType } from '../App';
+import { FaTrash } from 'react-icons/fa';
 
 type OrderProps = {
-    item: ItemsType
+    item: ItemsType,
+    onDelete: (id:number) => void,
 }
 
 const Order = (props: OrderProps) => {
@@ -11,6 +13,7 @@ const Order = (props: OrderProps) => {
             <img src={`./img/${props.item.img}`} alt="" />
             <h2>{props.item.title}</h2>
             <b>{props.item.price}$</b>
+            <FaTrash className='delete-icon' onClick={() => props.onDelete(props.item.id)}/>
         </div>
     )
 }

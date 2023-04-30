@@ -4,14 +4,15 @@ import { ItemsType } from '../App';
 import Order from './Order';
 
 type HeaderProps = {
-  orders: Array<ItemsType>
+  orders: Array<ItemsType>,
+  onDelete: (id:number) => void,
 }
 
 const showOrders = (props: HeaderProps) => {
     return (
       <div>
           {props.orders.map(order => {
-              return <Order key={order.id} item={order}/>
+              return <Order onDelete={props.onDelete} key={order.id} item={order}/>
             })}
       </div>
     )
