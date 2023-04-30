@@ -119,6 +119,13 @@ header .shop-cart .item .delete-icon:hover {
     transform: scale(1.5);
 }
 
+header .shop-cart .sum-orders {
+    float: left;
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
 header .presentation {
     margin: 50px 0;
     background: url('./img/interier-bg.jpg') no-repeat;

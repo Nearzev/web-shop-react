@@ -9,11 +9,14 @@ type HeaderProps = {
 }
 
 const showOrders = (props: HeaderProps) => {
+  let sum = 0
+  props.orders.forEach(order => sum += Number.parseFloat(order.price))
     return (
       <div>
           {props.orders.map(order => {
               return <Order onDelete={props.onDelete} key={order.id} item={order}/>
             })}
+            <p className='sum-orders'>Сумма: {new Intl.NumberFormat().format(sum)}$</p>
       </div>
     )
 }

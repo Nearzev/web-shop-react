@@ -25,7 +25,7 @@ const App = () => {
           setItems(data);
         })
         .catch(error => console.error('Ошибка при выполнении запроса:', error));
-    }, 10000000000); 
+    }, 10000); 
 
     return () => {
       clearInterval(intervalId);
