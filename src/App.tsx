@@ -14,7 +14,7 @@ export type ItemsType = {
 
 let items: ItemsType[];
 
-(async function getData(url:string) {
+async function getData(url:string) {
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -22,7 +22,8 @@ let items: ItemsType[];
   } catch (error) {
     console.error('Ошибка при выполнении запроса:', error);
   }
-}('https://63fdd8c4cd13ced3d7c02d2a.mockapi.io/t/Cards'))
+}
+getData('https://63fdd8c4cd13ced3d7c02d2a.mockapi.io/t/Cards')
 
 
 const App = () => {
