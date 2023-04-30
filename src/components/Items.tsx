@@ -4,7 +4,7 @@ import Item from './Item'
 
 type PropsType = {
     items: Array<ItemsType>,
-    onAdd: (item: ItemsType) => void
+    onAdd: (item: ItemsType) => void,
 }
 
 const showItemsCards = (props: PropsType) => {
