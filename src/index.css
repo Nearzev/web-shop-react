@@ -126,6 +126,17 @@ header .shop-cart .sum-orders {
     margin-bottom: 20px;
 }
 
+.order-counter div {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-right: 5px;
+    text-align: center;
+    background: rgba(211, 211, 211, 0.653);
+    border-radius: 10px;
+}
+
 header .presentation {
     margin: 50px 0;
     background: url('./img/interier-bg.jpg') no-repeat;

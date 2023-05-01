@@ -5,33 +5,56 @@ import Order from './Order';
 
 type HeaderProps = {
   orders: Array<ItemsType>,
-  onDelete: (id:number) => void,
+  onDelete: (id:number) => any,
 }
 
-const showOrders = (props: HeaderProps) => {
-  let sum = 0
-  props.orders.forEach(order => sum += Number.parseFloat(order.price))
+const Header = (props: HeaderProps) => {
+  const [cartOpen, setCartOpen] = useState(false)
+  const [counts, setCounts] = useState<{[key: number]: number}>({})
+
+  const handleCountChange = (id: number, count: number) => {
+    setCounts({
+      ...counts,
+      [id]: count
+    })
+  }
+
+  const handleDelete = (id: number) => {
+    props.onDelete(id);
+    handleCountChange(id, 1);
+  }
+
+  const showOrders = () => {
+    let sum = 0
     return (
       <div>
-          {props.orders.map(order => {
-              return <Order onDelete={props.onDelete} key={order.id} item={order}/>
-            })}
-            <p className='sum-orders'>Сумма: {new Intl.NumberFormat().format(sum)}$</p>
+        {props.orders.map(order => {
+          const count = counts[order.id] ?? 1
+          const orderSum = parseInt(order.price) * count
+          sum += orderSum
+          return (
+            <Order
+              key={order.id}
+              item={order}
+              count={count}
+              onCountChange={(count: number) => handleCountChange(order.id, count)}
+              onDelete={() =>handleDelete(order.id)}
+              orderSum={orderSum}
+            />
+          )
+        })}
+        <p className='sum-orders'>Сумма: {new Intl.NumberFormat().format(sum)}$</p>
       </div>
     )
-}
+  }
 
-const showNothing = () => {
+  const showNothing = () => {
     return (
       <div className='empty'>
         <h2>Товаров нет</h2>
       </div>
     )
-}
-
-const Header = (props: HeaderProps) => {
-
-  let [cartOpen, setCartOpen] = useState(false)
+  }
 
   return (
     <header>
@@ -42,11 +65,11 @@ const Header = (props: HeaderProps) => {
           <li>Контакты</li>
           <li>Кабинет</li>
         </ul>
-        <FaShoppingCart onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`shop-cart-button ${cartOpen && 'active'}`}/>
+        <FaShoppingCart onClick={() => setCartOpen(!cartOpen)} className={`shop-cart-button ${cartOpen && 'active'}`}/>
 
         {cartOpen && (
           <div className='shop-cart'>
-            {props.orders.length > 0 ? showOrders(props) : showNothing()}
+            {props.orders.length > 0 ? showOrders() : showNothing()}
           </div>
         )}
       </div>

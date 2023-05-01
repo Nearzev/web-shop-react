@@ -10,7 +10,8 @@ export type ItemsType = {
   img: string,
   desc: string,
   category: string,
-  price: string
+  price: string,
+  totalPrice: number,
 } 
 
 const App = () => {
