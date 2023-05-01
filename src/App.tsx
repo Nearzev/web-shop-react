@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Items from './components/Items';
 import Category from './components/Category';
+import ShowModalItem from './components/ShowModalItem';
 
 export type ItemsType = {
   id: number,
@@ -18,6 +19,8 @@ const App = () => {
   const [items, setItems] = useState(Array<ItemsType>);
   const [orders, setOrders] = useState(Array<ItemsType>);
   let [currentItems, setCurrentItems] = useState(Array<ItemsType>);
+  const [ModalItemState, setModalItemState] = useState(false);
+  const [showModalItem, setShowModalItem] = useState<ItemsType>()
 
   useEffect(() => {
     setCurrentItems(items);
@@ -76,12 +79,23 @@ const App = () => {
     
   }
 
+  const changeModalState = (item: ItemsType) => {
+    if(ModalItemState === false) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+    setShowModalItem(item)
+    setModalItemState(!ModalItemState)
+  }
+
   return (
     <div className="App">
       <div className='wrapper'>
         <Header orders={orders} onDelete={deleteOrder} />
         <Category chooseCategory={chooseCategory} />
-        <Items items={currentItems} onAdd={addToOrder} />
+        <Items changeModalState={changeModalState} items={currentItems} onAdd={addToOrder} />
+        {ModalItemState && showModalItem && <ShowModalItem  onAdd={addToOrder} changeModalState={changeModalState} item={showModalItem} />}
       </div>
       <Footer />
     </div>
