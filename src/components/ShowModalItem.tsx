@@ -6,7 +6,7 @@ type showModalProps = {
     changeModalState: (item: ItemsType) => void,
 }
 
-export default function ShowModalItem(props: showModalProps) {
+const ShowModalItem = (props: showModalProps) => {
     const clickOnAdd = () => {
         props.onAdd(props.item)
         props.changeModalState(props.item)
@@ -27,3 +27,5 @@ export default function ShowModalItem(props: showModalProps) {
         </div>
     )
 }
+
+export default ShowModalItem
