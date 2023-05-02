@@ -1,4 +1,3 @@
-import React from 'react'
 import { ItemsType } from '../App'
 import Item from './Item'
 

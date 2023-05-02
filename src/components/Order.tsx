@@ -1,4 +1,3 @@
-import React from 'react'
 import { ItemsType } from '../App';
 import { FaTrash } from 'react-icons/fa';
 
@@ -14,11 +13,7 @@ type OrderProps = {
 const Order = (props: OrderProps) => {
 
     const numCheck = (num: number) => {
-        if (num < 1) {
-            return 1;
-        } else {
-            return num;
-        }
+        return num < 1 ? 1 : num
     }
     return (
         <div className='item'>

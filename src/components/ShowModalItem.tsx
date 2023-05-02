@@ -1,4 +1,3 @@
-import React from 'react'
 import { ItemsType } from '../App'
 type showModalProps = {
     item: ItemsType,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 type CategoriesType = {
     key: 'all' | 'sofa' | 'light' | 'chairs' | 'tables',
@@ -9,7 +9,7 @@ type CategoriesProps = {
     chooseCategory: (category: string) => void,
 }
 
-const Categories:Array<CategoriesType> = [
+const Categories:CategoriesType[] = [
     {
         key: 'all',
         name: 'Всё',
@@ -36,12 +36,12 @@ const Categories:Array<CategoriesType> = [
 
 const Category = (props: CategoriesProps) => {
     const [selectedCategory, setSelectedCategory] = useState('all');
-  
+
     const handleCategoryClick = (categoryKey: string) => {
-      setSelectedCategory(categoryKey);
-      props.chooseCategory(categoryKey);
+        setSelectedCategory(categoryKey);
+        props.chooseCategory(categoryKey);
     };
-  
+
 return (
     <div className="categories">
         {Categories.map((category) => (

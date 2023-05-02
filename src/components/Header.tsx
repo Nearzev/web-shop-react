@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { FaShoppingCart } from "react-icons/fa";
 import { ItemsType } from '../App';
 import Order from './Order';
 
 type HeaderProps = {
   orders: Array<ItemsType>,
-  onDelete: (id:number) => any,
+  onDelete: (id:number) => void,
 }
 
 const Header = (props: HeaderProps) => {
