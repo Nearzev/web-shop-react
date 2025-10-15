@@ -8,15 +8,20 @@ type PropsType = {
 }
 
 const showItemsCards = (props: PropsType) => {
-    return(
+    const itemsArray = Array.isArray(props.items) ? props.items : [];
+    return (
         <main>
-            {props.items.map(item => {
-                return <Item  changeModalState={props.changeModalState} key={item.id} item={item} onAdd={props.onAdd} /> 
-            })}
+            {itemsArray.map(item => (
+                <Item
+                    changeModalState={props.changeModalState}
+                    key={item.id}
+                    item={item}
+                    onAdd={props.onAdd}
+                />
+            ))}
         </main>
-    )
-}
-
+    );
+};
 const showNothing = () => {
     return(
         <div className='Empty'>
